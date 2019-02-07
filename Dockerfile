@@ -12,3 +12,9 @@ RUN sudo mv terraform /usr/local/bin/
 
 RUN docker-php-ext-install gd zip
 
+# SSH
+RUN set -eux; \
+	apt-get update; \
+	apt-get install -y --no-install-recommends libssh2-1-dev; \
+	pecl install ssh2-1.1.2; \
+	docker-php-ext-enable ssh2
